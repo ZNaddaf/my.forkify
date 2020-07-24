@@ -1,7 +1,9 @@
 import Search from './models/Search';
 import * as searchView from './views/searchView';
 import {
-    elements
+    elements,
+    renderLoder,
+    clearLoader
 } from './views/base';
 
 
@@ -25,11 +27,13 @@ const conrolSearch = async () => {
         // 3) Prepare UI for results
         searchView.clearInput();
         searchView.clearResults();
+        renderLoder(elements.searchRes);
 
         // 4) Search for recipes
         await state.search.getResults();
 
         // 5) Render results in UI
+        clearLoader();
         searchView.renderResults(state.search.result);
     }
 }
