@@ -1,8 +1,4 @@
 import axios from 'axios';
-import {
-    key,
-    proxy
-} from '../config';
 
 export default class Recipe {
     constructor(id) {
@@ -11,7 +7,7 @@ export default class Recipe {
 
     async getRecipe() {
         try {
-            const res = await axios(`${proxy}http://food2fork.com/api/get?key=${key}&rId=${this.id}`);
+            const res = await axios(`https://forkify-api.herokuapp.com/api/get?rId=${this.id}`);
             this.title = res.data.recipe.title;
             this.author = res.data.recipe.publisher;
             this.img = res.data.recipe.image_url;
@@ -32,5 +28,24 @@ export default class Recipe {
 
     calcServings() {
         this.servings = 4;
+    }
+
+    parseIngredients() {
+        const unitsLong = ['tablespoons', 'tablespoon', 'ounce', 'ounces', 'teaspoon', 'teaspoons', 'cups', 'pounds'];
+        const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
+
+        const newIngredients = this.ingredients.map(el => {
+            // 1. Uniform units
+            let ingredient = el.toLowerCase();
+            unitsLong.forEach((unit, i) => {
+                ingredient = ingredient.replace(unit, unitsShort[i])
+            });
+
+            // 2. Remove parenthesis
+            ingredient = ingredient.replace(/ *\([^)]*\) */g, '');
+
+            // 3. Parse Ingredients into count, unit, and ingredient
+        });
+        this.ingredients = newIngredients;
     }
 }

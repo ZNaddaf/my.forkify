@@ -1,4 +1,5 @@
 import Search from './models/Search';
+// import Recipe from './models/Recipe';
 import * as searchView from './views/searchView';
 import {
     elements,
@@ -83,7 +84,7 @@ const controlRecipe = async () => {
             // Render reicpe
             console.log(state.recipe);
         } catch (err) {
-            alert('Error processing reccipe!');
+            alert('Error processing recipe!');
         }
     }
 };
