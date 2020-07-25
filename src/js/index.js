@@ -1,5 +1,5 @@
 import Search from './models/Search';
-// import Recipe from './models/Recipe';
+import Recipe from './models/Recipe';
 import * as searchView from './views/searchView';
 import {
     elements,
@@ -16,9 +16,11 @@ import {
  */
 const state = {};
 
+// SEARCH CONTROLLER
 const controlSearch = async () => {
     // 1) Get query from view
     const query = searchView.getInput();
+
     console.log(query);
 
     if (query) {
@@ -61,6 +63,8 @@ elements.searchResPages.addEventListener('click', e => {
 });
 
 
+
+
 // RECIPE CONTROLLER
 const controlRecipe = async () => {
     // Get ID from url
@@ -74,12 +78,14 @@ const controlRecipe = async () => {
         state.recipe = new Recipe(id);
 
         try {
-            // Get recipe data
+            // Get recipe data and parse ingredients
             await state.recipe.getRecipe();
+            console.log(state.recipe.ingredients)
+            state.recipe.parseIngredients();
 
             // Calculate servings and time
             state.recipe.calcTime();
-            state.recipe.calcSServings();
+            state.recipe.calcServings();
 
             // Render reicpe
             console.log(state.recipe);
