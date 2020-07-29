@@ -12,7 +12,7 @@ export default class Likes {
         };
         this.likes.push(like);
 
-        // Persist data in localStorage
+        // Perist data in localStorage
         this.persistData();
 
         return like;
@@ -22,7 +22,7 @@ export default class Likes {
         const index = this.likes.findIndex(el => el.id === id);
         this.likes.splice(index, 1);
 
-        // Persist data in localStorage
+        // Perist data in localStorage
         this.persistData();
     }
 
