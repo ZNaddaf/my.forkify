@@ -1,5 +1,5 @@
 # My.Forkify
-A simple javascript recipe lookup and save app that calls on the forkify-API, cloned for instructional purposes from a Udemy course on Javascript.
+A recipe lookup and save app that allows the user to search for recipes, save favorites, adjust the portions and servings, and keep a shopping list. The app calls on the forkify-API and was cloned for instructional purposes from a Udemy course on Javascript.
 
 <img src="./dist/img/ScreenShot.png" alt="Main Page Screenshot" width="700"/>
 
@@ -37,4 +37,4 @@ $ npm start
 
 ### Sources
 Udemy.com: The Complete JavaScript Course 2020: Build Real Projects!
-created by [Jonas Schmedtmann](https://github.com/jonasschmedtmann)
+Created by [Jonas Schmedtmann](https://github.com/jonasschmedtmann)
