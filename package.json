@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Restaurant lookup app",
   "main": "index.js",
+  "engines": {
+    "node": ">=v12.18.2"
+  },
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
